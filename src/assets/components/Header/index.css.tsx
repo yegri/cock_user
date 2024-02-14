@@ -21,7 +21,7 @@ export const logoImg = style({
 });
 
 export const logoTxt = style({
-  width: "8rem",
+  width: "7rem",
   height: "auto",
 });
 

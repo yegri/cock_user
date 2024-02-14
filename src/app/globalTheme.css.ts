@@ -67,6 +67,16 @@ globalStyle("body", {
   color: global.foreground.color,
 });
 
+globalStyle("input", {
+  outline: "none",
+  paddingLeft: "0.5rem",
+});
+
+globalStyle("button", {
+  border: "none",
+  borderRadius: "3px",
+});
+
 globalStyle("a", {
   color: "inherit",
   textDecoration: "none",
