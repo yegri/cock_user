@@ -18,7 +18,7 @@ export const global = createGlobalThemeContract({
 // white global theme
 createGlobalTheme(":root", global, {
   background: {
-    color: "rgb(255, 255, 255)",
+    color: "rgba(167,154,175,0.3)",
   },
   foreground: {
     color: "rgb(0, 0, 0)",
@@ -63,6 +63,7 @@ globalStyle("html, body", {
 });
 
 globalStyle("body", {
+  backgroundColor: global.background.color,
   color: global.foreground.color,
 });
 

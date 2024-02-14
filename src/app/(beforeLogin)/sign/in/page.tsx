@@ -1,9 +1,7 @@
+import SignInPage from "@/assets/features/Sign/in";
+
 const SignIn = () => {
-  return (
-    <>
-      <div>dd</div>
-    </>
-  );
+  return <SignInPage />;
 };
 
 export default SignIn;
