@@ -1,9 +1,7 @@
+import SignUpPage from "@/assets/features/Sign/up";
+
 const SignUp = () => {
-  return (
-    <>
-      <div>dd</div>
-    </>
-  );
+  return <SignUpPage />;
 };
 
 export default SignUp;

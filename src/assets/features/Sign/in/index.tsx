@@ -1,10 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import * as styles from "./index.css";
 
 const SignInPage = () => {
   return (
     <div className={styles.root}>
-      <h1 className={styles.h1}>로그인</h1>
+      <h2 className={styles.h1}>로그인</h2>
       <form>
         {/* 아이디 */}
         <div className={styles.inputBox}>
@@ -24,7 +26,7 @@ const SignInPage = () => {
 
           <div className={styles.navi}>
             <Link href="/">ID/PW 찾기</Link>
-            <Link href="/">회원가입</Link>
+            <Link href="/sign/up">회원가입</Link>
           </div>
         </div>
       </form>
