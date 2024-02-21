@@ -17,7 +17,18 @@ const handler = NextAuth({
       // 맞으면 user 객체 리턴
       // 틀리면 null 리턴
       async authorize(credentials, req) {
-        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: credentials?.username,
+            password: credentials?.password,
+          }),
+        });
+        const user = await res.json();
+        console.log(user);
 
         if (user) {
           return user;

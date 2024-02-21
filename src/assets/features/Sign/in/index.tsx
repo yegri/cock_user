@@ -1,7 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import * as styles from "./index.css";
+import SignInButton from "@/assets/components/Button/SignInButton";
 
 const SignInPage = () => {
   return (
@@ -22,7 +21,7 @@ const SignInPage = () => {
 
         {/* 로그인 버튼 */}
         <div className={styles.buttonBox}>
-          <button>로그인</button>
+          <SignInButton />
 
           <div className={styles.navi}>
             <Link href="/">ID/PW 찾기</Link>
