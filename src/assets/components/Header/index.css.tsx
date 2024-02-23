@@ -29,3 +29,8 @@ export const person = style({
   width: "2rem",
   height: "auto",
 });
+
+export const person_fill = style({
+  width: "1.5rem",
+  height: "auto",
+});

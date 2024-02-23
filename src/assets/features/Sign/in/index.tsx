@@ -1,27 +1,72 @@
+"use client";
+
 import Link from "next/link";
 import * as styles from "./index.css";
-import SignInButton from "@/assets/components/Button/SignInButton";
+import { FormEvent, useState } from "react";
+import { signIn } from "next-auth/react";
 
 const SignInPage = () => {
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const [blankId, setBlankId] = useState(false);
+  const [blankPw, setBlankPw] = useState(false);
+
+  const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value);
+  };
+
+  const onChangePw = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (id.length <= 0) setBlankId(true);
+    if (password.length <= 0) setBlankId(true);
+    if (!blankId && !blankPw) {
+      await signIn("credentials", {
+        username: id,
+        password: password,
+        redirect: true,
+        callbackUrl: "/",
+      }).then(() => {
+        alert("로그인이 완료되었습니다.");
+      });
+    }
+  };
+
   return (
     <div className={styles.root}>
       <h2 className={styles.h1}>로그인</h2>
-      <form>
+      <form onSubmit={onSubmit}>
         {/* 아이디 */}
         <div className={styles.inputBox}>
           <p className={styles.p}>ID</p>
-          <input type="text" />
+          <input
+            type="text"
+            name="id"
+            value={id}
+            onChange={onChangeId}
+            required
+          />
         </div>
 
         {/* 비밀번호 */}
         <div className={styles.inputBox}>
           <p className={styles.p}>PASSWORD</p>
-          <input type="password" />
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={onChangePw}
+            required
+          />
         </div>
 
         {/* 로그인 버튼 */}
         <div className={styles.buttonBox}>
-          <SignInButton />
+          <button type="submit">로그인</button>
 
           <div className={styles.navi}>
             <Link href="/">ID/PW 찾기</Link>
