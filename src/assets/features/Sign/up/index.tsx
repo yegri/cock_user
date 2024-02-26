@@ -81,7 +81,7 @@ const SignUpPage = () => {
           alert("회원가입이 완료되었습니다.");
           router.push("/signin");
         } else {
-          alert("이미 가입된 이메일입니다. 다른 이메일을 사용해주세요.");
+          alert("이미 가입된 아이디입니다. 다른 아이디를 사용해주세요.");
         }
       });
     } catch {}
