@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import * as styles from "./index.css";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +10,8 @@ const SignUpPage = () => {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [userName, setUserName] = useState("");
   const [nickName, setNickName] = useState("");
+  const [isEmailUnique, setIsEmailunique] = useState(false);
+  const router = useRouter();
 
   const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -31,6 +33,26 @@ const SignUpPage = () => {
     setNickName(e.target.value);
   };
 
+  // const onEmailCheck = (e: React.MouseEventHandler<HTMLButtonElement>) => {
+  //   e.preventDefault();
+
+  //   const emailData = { email };
+
+  //   fetch("http://localhost:3000/api/emailCheck", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(emailData),
+  //   }).then((res) => {
+  //     if (res.ok) {
+  //       alert("사용할 수 있는 아이디입니다.");
+  //     } else {
+  //       alert("중복된 아이디입니다.");
+  //     }
+  //   });
+  // };
+
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -48,17 +70,20 @@ const SignUpPage = () => {
       };
 
       // 회원가입 API에 데이터를 POST 요청으로 보냅니다.
-      const response = await fetch("http://localhost:3000/api/user", {
+      fetch("http://localhost:3000/api/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userData),
+      }).then((res) => {
+        if (res.ok) {
+          alert("회원가입이 완료되었습니다.");
+          router.push("/signin");
+        } else {
+          alert("이미 가입된 이메일입니다. 다른 이메일을 사용해주세요.");
+        }
       });
-
-      if (response.ok) {
-        redirect("/signin");
-      }
     } catch {}
   };
 
@@ -79,7 +104,9 @@ const SignUpPage = () => {
             onChange={onChangeId}
             required
           />
-          <button className={styles.idBtn}>중복확인</button>
+          {/* <button className={styles.idBtn} type="submit">
+            중복확인
+          </button> */}
         </div>
 
         {/* 비밀번호 */}

@@ -70,7 +70,7 @@ const SignInPage = () => {
 
           <div className={styles.navi}>
             <Link href="/">ID/PW 찾기</Link>
-            <Link href="/sign/up">회원가입</Link>
+            <Link href="/signup">회원가입</Link>
           </div>
         </div>
       </form>

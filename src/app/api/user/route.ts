@@ -3,6 +3,7 @@ import * as bcrypt from "bcrypt";
 
 interface RequestBody {
   name: string;
+  userName: string;
   email: string;
   password: string;
 }
@@ -14,7 +15,7 @@ export async function POST(request: Request) {
   // DB User 테이블에 데이터 넣기
   const user = await prisma.user.create({
     data: {
-      name: body.name,
+      name: body.userName,
       email: body.email,
       password: await bcrypt.hash(body.password, 10),
     },
