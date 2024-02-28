@@ -2,39 +2,39 @@ import { globalStyle, style } from "@vanilla-extract/css";
 
 export const box = style({
   border: "1px solid black",
+  background: "#f0f0f0",
   borderRadius: "10px",
-  maxWidth: "250px",
+  maxWidth: "50%",
   width: "100%",
-  height: "300px",
+  height: "140px",
   cursor: "pointer",
+  display: "flex",
 });
 
-export const top = style({
-  width: "100%",
-  height: "60%",
+export const left = style({
+  width: "25%",
+  height: "100%",
+  padding: "0.5rem",
 });
 
 export const thumbnail = style({
   width: "100%",
   height: "100%",
   objectFit: "cover",
-  borderRadius: "10px 10px 0 0",
+  borderRadius: "10px",
 });
 
-export const bottom = style({
-  width: "100%",
-  height: "40%",
-  padding: "0.5rem",
-  background: "#f0f0f0",
-  borderRadius: "10px",
-  fontSize: "0.92rem",
+export const right = style({
+  width: "70%",
+  height: "100%",
+  padding: "0.8rem",
 });
 
 export const name = style({
-  fontSize: "1.2rem",
+  fontSize: "1.3rem",
   fontWeight: "bold",
   marginBottom: "0.3rem",
-  marginTop: "0.2rem",
+  marginTop: "0.3rem",
 });
 
 export const explain = style({
@@ -44,5 +44,5 @@ export const explain = style({
   lineClamp: "vertical",
   overflow: "hidden",
   textOverflow: "ellipsis",
-  height: "65%",
+  height: "66%",
 });

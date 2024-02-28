@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { right } from "../Items/ListItem/index.css";
 
 export const root = style({
   display: "flex",
