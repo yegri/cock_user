@@ -13,7 +13,9 @@ const BoardListPage = () => {
     <div className={styles.root}>
       <div className={styles.hotPost}>
         <h2>인기 게시글</h2>
-        <BoardItem id={dummy.id} />
+        <div className={styles.hotPostItemBox}>
+          <BoardItem id={dummy.id} />
+        </div>
       </div>
 
       <div className={styles.newPost}>

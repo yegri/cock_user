@@ -25,7 +25,7 @@ export const bottom = style({
   width: "100%",
   height: "40%",
   padding: "0.5rem",
-  background: "#f0f0f0",
+  background: "rgba(240,240,240,0.5)",
   borderRadius: "10px",
   fontSize: "0.92rem",
 });
