@@ -5,6 +5,10 @@ import ListItem from "@/assets/components/Items/ListItem";
 import BoardItem from "@/assets/components/Items/BoradItem";
 
 export default function Home() {
+  const dummy = {
+    id: 1,
+  };
+
   return (
     <div className={styles.mainWrap}>
       {/* 추천 레시피 */}
@@ -13,7 +17,7 @@ export default function Home() {
           추천 레시피
         </Link>
         <div>
-          <CardItem />
+          <CardItem id={dummy.id} />
         </div>
       </div>
 

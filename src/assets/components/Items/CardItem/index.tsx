@@ -3,10 +3,17 @@ import Image from "next/image";
 import React from "react";
 import ex1 from "@/assets/images/cocktails/Rectangle 254.png";
 import * as styles from "./index.css";
+import { useRouter } from "next/navigation";
 
-const CardItem = () => {
+interface CocktailProps {
+  id: Number;
+}
+
+const CardItem = ({ id }: CocktailProps) => {
+  const router = useRouter();
+
   return (
-    <div className={styles.box}>
+    <div className={styles.box} onClick={() => router.push(`recipe/${id}`)}>
       <div className={styles.top}>
         <Image src={ex1} alt="예시 이미지" className={styles.thumbnail} />
       </div>

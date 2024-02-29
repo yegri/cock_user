@@ -3,6 +3,10 @@ import CardItem from "@/assets/components/Items/CardItem";
 import * as styles from "./index.css";
 
 const RecipeListPage = () => {
+  const dummy = {
+    id: 1,
+  };
+
   return (
     <div className={styles.root}>
       <div className={styles.top}>
@@ -16,11 +20,11 @@ const RecipeListPage = () => {
         </div>
       </div>
       <div className={styles.bottom}>
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
+        <CardItem id={dummy.id} />
+        <CardItem id={dummy.id} />
+        <CardItem id={dummy.id} />
+        <CardItem id={dummy.id} />
+        <CardItem id={dummy.id} />
       </div>
     </div>
   );
