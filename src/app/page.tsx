@@ -31,13 +31,13 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 최근 게시글 */}
+      {/* 인기 게시글 */}
       <div className={styles.mainSecond}>
-        <Link href="/" className={styles.mainTitle}>
-          최근 게시글 &gt;
+        <Link href="/board" className={styles.mainTitle}>
+          인기 게시글 &gt;
         </Link>
         <div className={styles.boardBox}>
-          <BoardItem />
+          <BoardItem id={dummy.id} />
         </div>
       </div>
     </div>

@@ -4,7 +4,6 @@ export const box = style({
   boxShadow: "2px 2px 10px 2px #cecece",
   background: "#f0f0f0",
   borderRadius: "10px",
-  maxWidth: "50%",
   width: "100%",
   height: "140px",
   cursor: "pointer",
@@ -12,7 +11,7 @@ export const box = style({
 });
 
 export const left = style({
-  width: "25%",
+  width: "10%",
   height: "100%",
   padding: "0.8rem",
 });
@@ -25,7 +24,7 @@ export const thumbnail = style({
 });
 
 export const right = style({
-  width: "70%",
+  width: "90%",
   height: "100%",
   padding: "0.8rem",
 });

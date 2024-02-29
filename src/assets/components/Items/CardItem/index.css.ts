@@ -1,12 +1,12 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
 export const box = style({
-  border: "1px solid black",
   borderRadius: "10px",
   maxWidth: "250px",
   width: "100%",
   height: "300px",
   cursor: "pointer",
+  boxShadow: "2px 2px 10px 2px #cecece",
 });
 
 export const top = style({
