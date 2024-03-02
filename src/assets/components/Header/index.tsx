@@ -10,6 +10,8 @@ import { useSession } from "next-auth/react";
 
 const Header = () => {
   const { data: session } = useSession();
+  const user = session?.user;
+  console.log(session);
 
   return (
     <div className={styles.root}>
@@ -24,8 +26,8 @@ const Header = () => {
         </span>
       </Link>
 
-      {session ? (
-        <Link href="/">
+      {user ? (
+        <Link href="/mypage">
           <Image className={styles.person_fill} src={person_fill} alt="사람" />
         </Link>
       ) : (

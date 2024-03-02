@@ -1,4 +1,4 @@
-const AfterLoginLayout = ({
+const BeforeLoginLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -6,4 +6,4 @@ const AfterLoginLayout = ({
   return <>{children}</>;
 };
 
-export default AfterLoginLayout;
+export default BeforeLoginLayout;
