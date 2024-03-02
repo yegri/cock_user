@@ -54,3 +54,14 @@ export const idBtn = style({
   bottom: "0.4rem",
   right: "0.7rem",
 });
+
+export const logOutBox = style({
+  width: "100%",
+  textAlign: "center",
+  marginTop: "2rem",
+  color: "#777777",
+});
+
+globalStyle(`${logOutBox} p`, {
+  cursor: "pointer",
+});

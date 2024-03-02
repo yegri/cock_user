@@ -4,12 +4,14 @@ import Link from "next/link";
 import * as styles from "./index.css";
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const SignInPage = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [blankId, setBlankId] = useState(false);
   const [blankPw, setBlankPw] = useState(false);
+  const router = useRouter();
 
   const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setId(e.target.value);
@@ -24,15 +26,19 @@ const SignInPage = () => {
 
     if (id.length <= 0) setBlankId(true);
     if (password.length <= 0) setBlankId(true);
-    if (!blankId && !blankPw) {
-      await signIn("credentials", {
-        username: id,
-        password: password,
-        redirect: true,
-        callbackUrl: "/",
-      }).then(() => {
-        alert("로그인이 완료되었습니다.");
-      });
+
+    const result = await signIn("credentials", {
+      username: id,
+      password: password,
+      redirect: false,
+    });
+
+    if (result?.error === "CredentialsSignin") {
+      alert("로그인에 실패했습니다. 아이디와 비밀번호를 확인해주세요.");
+    }
+    if (result?.ok) {
+      alert("로그인이 완료되었습니다.");
+      router.push("/");
     }
   };
 
