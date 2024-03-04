@@ -35,3 +35,13 @@ export const person_fill = style({
   width: "1.5rem",
   height: "auto",
 });
+
+export const personWrap = style({
+  position: "relative",
+});
+
+export const modalBox = style({
+  position: "absolute",
+  right: 0,
+  top: "2.5rem",
+});

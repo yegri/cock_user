@@ -1,9 +1,9 @@
 "use client";
 
-import { FormEvent, use, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import * as styles from "./index.css";
 import { useRouter } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 const EditInfo = () => {
   const { data: session } = useSession();
@@ -86,11 +86,6 @@ const EditInfo = () => {
     } catch {}
   };
 
-  const onLogout = () => {
-    signOut();
-    alert("로그아웃이 완료되었습니다.");
-  };
-
   return (
     <div className={styles.root}>
       <form onSubmit={onSubmit}>
@@ -169,11 +164,6 @@ const EditInfo = () => {
           <button type="submit">정보 수정</button>
         </div>
       </form>
-
-      {/* 로그아웃 버튼 */}
-      <div className={styles.logOutBox}>
-        <p onClick={onLogout}>로그아웃</p>
-      </div>
     </div>
   );
 };

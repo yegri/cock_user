@@ -7,11 +7,21 @@ import Image from "next/image";
 import * as styles from "./index.css";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import UserModal from "../Modals/UserModal";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const { data: session } = useSession();
   const user = session?.user;
   console.log(session);
+
+  const pathname = usePathname();
+  const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    setModal(false);
+  }, [pathname]);
 
   return (
     <div className={styles.root}>
@@ -27,9 +37,23 @@ const Header = () => {
       </Link>
 
       {user ? (
-        <Link href="/mypage">
-          <Image className={styles.person_fill} src={person_fill} alt="사람" />
-        </Link>
+        <div className={styles.personWrap}>
+          <div>
+            <Image
+              className={styles.person_fill}
+              src={person_fill}
+              alt="사람"
+              onClick={() => {
+                setModal(!modal);
+              }}
+            />
+          </div>
+          {modal && (
+            <div className={styles.modalBox}>
+              <UserModal userName={user?.name} />
+            </div>
+          )}
+        </div>
       ) : (
         <Link href="/signin">
           <Image className={styles.person} src={person} alt="사람" />
