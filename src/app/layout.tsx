@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globalTheme.css";
+
 import Header from "@/assets/components/Header";
 import * as fontCss from "@/app/font.css";
 import Providers from "./components/Providers";
