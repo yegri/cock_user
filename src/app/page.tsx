@@ -52,6 +52,7 @@ export default function Home() {
   if (error) {
     return <p>{error.message}</p>;
   }
+
   return (
     <div className={styles.mainWrap}>
       {/* 추천 레시피 */}
@@ -59,9 +60,7 @@ export default function Home() {
         <Link href="/recipe" className={styles.mainTitle}>
           추천 레시피
         </Link>
-        <div>
-          <CardItem id={dummy.id} />
-        </div>
+        <div>{/* <CardItem /> */}</div>
       </div>
 
       {/* TOP10 레시피 */}
