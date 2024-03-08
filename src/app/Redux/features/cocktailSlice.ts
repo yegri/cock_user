@@ -12,12 +12,26 @@ interface CocktailsState {
   cocktail: any[];
 }
 
+type Cocktail = {
+  id: string;
+};
+
 // createAsyncThunk를 사용해 비동기로 칵테일 데이터 가져오기
 export const fetchCocktails = createAsyncThunk(
   "cocktails/fetchCocktails",
   async () => {
     const res = await fetch(
       "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+    );
+    return await res.json();
+  }
+);
+
+export const fetchSingleCocktails = createAsyncThunk(
+  "cocktails/fetchSingleCocktails",
+  async ({ id }: Cocktail) => {
+    const res = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
     );
     return await res.json();
   }
@@ -46,8 +60,18 @@ const cocktailSlice = createSlice({
         state.loading = false;
         state.cocktails = action.payload.drinks;
       })
-
       .addCase(fetchCocktails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchSingleCocktails.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchSingleCocktails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.cocktail = action.payload.drinks;
+      })
+      .addCase(fetchSingleCocktails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

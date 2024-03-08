@@ -9,11 +9,12 @@ export const root = style({
 export const top = style({
   display: "flex",
   justifyContent: "space-between",
-  padding: "2rem 1rem",
+  padding: "2rem 3rem",
 });
 
 export const bottom = style({
   display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
+  gridTemplateColumns: "1fr 1fr 1fr 1fr",
+  rowGap: "4rem",
   placeItems: "center",
 });

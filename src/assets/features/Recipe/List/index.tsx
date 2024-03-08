@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCocktails } from "@/app/Redux/features/cocktailSlice";
 import Loading from "@/assets/components/Loading/page";
+import { AppDispatch } from "@/app/Redux/store";
 
 const RecipeListPage = () => {
   const [modifiedCocktails, setModifiedCocktails] = useState([]);
@@ -13,7 +14,7 @@ const RecipeListPage = () => {
     ...state.app,
   }));
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(fetchCocktails());
@@ -60,8 +61,8 @@ const RecipeListPage = () => {
         </div>
       </div>
       <div className={styles.bottom}>
-        {modifiedCocktails.map((item) => {
-          return <CardItem item={item} />;
+        {modifiedCocktails.map((item, idx) => {
+          return <CardItem item={item} key={idx} />;
         })}
       </div>
     </div>

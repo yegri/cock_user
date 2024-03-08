@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchCocktails } from "./Redux/features/cocktailSlice";
 import Loading from "@/assets/components/Loading/page";
+import { AppDispatch } from "./Redux/store";
 
 export default function Home() {
   const dummy = {
@@ -19,7 +20,7 @@ export default function Home() {
     ...state.app,
   }));
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(fetchCocktails());
