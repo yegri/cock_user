@@ -1,5 +1,4 @@
 import { style } from "@vanilla-extract/css";
-import { right } from "../Items/ListItem/index.css";
 
 export const root = style({
   display: "flex",
@@ -7,6 +6,10 @@ export const root = style({
   justifyContent: "space-between",
   padding: "1.2rem 1rem",
   borderBottom: "1px solid black",
+});
+
+export const none = style({
+  display: "none",
 });
 
 export const logos = style({

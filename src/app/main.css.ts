@@ -1,31 +1,74 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
 export const mainWrap = style({
-  padding: "2rem",
-  maxWidth: "1400px",
-  margin: "auto",
+  padding: "4rem 5rem",
+  width: "100%",
+  minHeight: "100vh",
+  overflow: "hidden",
+  // maxWidth: "1400px",
+  // margin: "auto",
 });
 
-export const mainFirst = style({
-  marginBottom: "4rem",
+export const logos = style({
+  border: "1px solid red",
 });
 
-export const mainSecond = style({
-  marginBottom: "4rem",
+export const texts = style({
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-end",
+  border: "1px solid pink",
 });
 
-export const mainThird = style({});
-
-export const mainTitle = style({
-  fontSize: "1.3rem",
-  fontWeight: "bold",
-  display: "block",
-  marginBottom: "0.8rem",
+export const mainTxt = style({
+  fontFamily: "blacksword",
+  fontSize: "5rem",
+  paddingRight: "2rem",
+  marginBottom: "1rem",
 });
 
-export const boardBox = style({
-  background: "rgba(240,240,240,0.5)",
-  borderRadius: "10px",
-  padding: "1rem",
-  boxShadow: "2px 2px 10px 2px #cecece",
+export const mainTxt2 = style({
+  fontFamily: "anton",
+  fontSize: "8rem",
+  lineHeight: "8.5rem",
+  textAlign: "end",
+  border: "2px solid #28165B",
+  padding: "1rem 1rem 1rem 10rem",
+  letterSpacing: "0.3rem",
+  marginBottom: "2rem",
+});
+
+export const mainTxt3 = style({
+  display: "flex",
+  justifyContent: "space-between",
+  fontSize: "2rem",
+  fontFamily: "merriwhether",
+});
+
+export const a = style({
+  position: "relative",
+  margin: "0 1.8rem",
+});
+
+export const arrowNone = style({
+  width: "1.5rem",
+  height: "auto",
+  position: "absolute",
+  top: "50%",
+  right: "2rem",
+  transform: "translateY(-50%)",
+  opacity: 0,
+  transition: "all 0.3s",
+});
+
+export const arrowShow = style({
+  width: "1.5rem",
+  height: "auto",
+  position: "absolute",
+  top: "50%",
+  right: "-2rem",
+  transform: "translateY(-50%)",
+  opacity: "1",
+  transition: "all 0.3s",
 });

@@ -24,7 +24,7 @@ const Header = () => {
   }, [pathname]);
 
   return (
-    <div className={styles.root}>
+    <div className={pathname === "/" ? `${styles.none}` : styles.root}>
       <div></div>
 
       <Link className={styles.logos} href="/">
