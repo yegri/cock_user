@@ -14,12 +14,12 @@ export const logos = style({});
 export const logoImg = style({
   width: "1.3rem",
   height: "auto",
-  marginBottom: "0.2rem",
 });
 
 export const logoTxt = style({
   width: "7rem",
   height: "auto",
+  position: "relative",
 });
 
 export const mainView = style({
@@ -97,6 +97,8 @@ export const mainTxt3 = style({
   justifyContent: "space-between",
   fontSize: "1.8rem",
   fontFamily: "anton",
+  border: "2px solid #28165B",
+  padding: "1rem 1rem 1rem 15rem",
 });
 
 export const a = style({

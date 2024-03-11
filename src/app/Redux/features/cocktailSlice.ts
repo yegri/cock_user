@@ -13,7 +13,8 @@ interface CocktailsState {
 }
 
 type Cocktail = {
-  id: string;
+  id?: string;
+  searchText?: string;
 };
 
 // createAsyncThunk를 사용해 비동기로 칵테일 데이터 가져오기
@@ -37,6 +38,16 @@ export const fetchSingleCocktails = createAsyncThunk(
   }
 );
 
+export const fetchSearchCocktails = createAsyncThunk(
+  "cocktails/fetchSearchCocktails",
+  async ({ searchText }: Cocktail) => {
+    const res = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searchText}`
+    );
+    return await res.json();
+  }
+);
+
 const cocktailSlice = createSlice({
   // 리듀서 이름
   name: "cocktails",
@@ -51,6 +62,7 @@ const cocktailSlice = createSlice({
   // 추가 리듀서
   extraReducers: (builder: ActionReducerMapBuilder<CocktailsState>) => {
     builder
+      // 전체 칵테일
       // 데이터 가져오는 중
       .addCase(fetchCocktails.pending, (state) => {
         state.loading = true;
@@ -64,6 +76,8 @@ const cocktailSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+
+      // 개별 칵테일
       .addCase(fetchSingleCocktails.pending, (state) => {
         state.loading = true;
       })
@@ -72,6 +86,19 @@ const cocktailSlice = createSlice({
         state.cocktail = action.payload.drinks;
       })
       .addCase(fetchSingleCocktails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+
+      // 칵테일 검색
+      .addCase(fetchSearchCocktails.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchSearchCocktails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.cocktails = action.payload.drinks;
+      })
+      .addCase(fetchSearchCocktails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
