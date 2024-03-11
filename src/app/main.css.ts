@@ -1,29 +1,82 @@
 import { style } from "@vanilla-extract/css";
 
 export const mainWrap = style({
-  padding: "4rem 5rem",
+  padding: "3rem 5rem 0",
   width: "100%",
   minHeight: "100vh",
   overflow: "hidden",
-  // maxWidth: "1400px",
+  maxWidth: "19200px",
   // margin: "auto",
 });
 
-export const logos = style({
-  border: "1px solid red",
+export const logos = style({});
+
+export const logoImg = style({
+  width: "1.3rem",
+  height: "auto",
+  marginBottom: "0.2rem",
+});
+
+export const logoTxt = style({
+  width: "7rem",
+  height: "auto",
+});
+
+export const mainView = style({
+  display: "flex",
+});
+
+export const imgBox = style({
+  width: "60%",
+  position: "relative",
+});
+
+export const blackBoard = style({
+  width: "30rem",
+  height: "auto",
+  position: "absolute",
+  top: "10%",
+  left: "10%",
+});
+
+export const cheers = style({
+  width: "25rem",
+  height: "25rem",
+  position: "absolute",
+  bottom: "0",
+  right: "15%",
+  borderRadius: "50% 50% 0 0",
+});
+
+export const lemon = style({
+  width: "15rem",
+  height: "auto",
+  position: "absolute",
+  top: "20%",
+  right: "8%",
+  zIndex: -1,
+});
+
+export const neon = style({
+  width: "16rem",
+  height: "auto",
+  position: "absolute",
+  bottom: "-5rem",
+  left: "0",
+  borderRadius: "50%",
+  zIndex: 1,
 });
 
 export const texts = style({
-  width: "100%",
+  width: "40%",
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-end",
-  border: "1px solid pink",
 });
 
 export const mainTxt = style({
   fontFamily: "blacksword",
-  fontSize: "5rem",
+  fontSize: "4.5rem",
   paddingRight: "2rem",
   marginBottom: "1rem",
 });
@@ -34,7 +87,7 @@ export const mainTxt2 = style({
   lineHeight: "8.5rem",
   textAlign: "end",
   border: "2px solid #28165B",
-  padding: "1rem 1rem 1rem 10rem",
+  padding: "1rem 1rem 1rem 12rem",
   letterSpacing: "0.3rem",
   marginBottom: "2rem",
 });
@@ -42,8 +95,8 @@ export const mainTxt2 = style({
 export const mainTxt3 = style({
   display: "flex",
   justifyContent: "space-between",
-  fontSize: "2rem",
-  fontFamily: "merriwhether",
+  fontSize: "1.8rem",
+  fontFamily: "anton",
 });
 
 export const a = style({
