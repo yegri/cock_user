@@ -24,14 +24,18 @@ export default function Home() {
 
       <div className={styles.mainView}>
         <div className={styles.imgBox}>
-          <Image src={neon} alt="네온 사인" className={styles.neon} />
-          <Image
-            src={black_board}
-            alt="블랙 보드"
-            className={styles.blackBoard}
-          />
-          <Image src={cheers} alt="건배" className={styles.cheers} />
-          <Image src={lemon} alt="레몬" className={styles.lemon} />
+          <span className={styles.neon}>
+            <Image src={neon} alt="네온 사인" className={styles.neonImg} />
+          </span>
+          <span className={styles.blackBoard}>
+            <Image src={black_board} alt="블랙 보드" />
+          </span>
+          <span className={styles.cheers}>
+            <Image src={cheers} alt="건배" className={styles.cheersImg} />
+          </span>
+          <span className={styles.lemon}>
+            <Image src={lemon} alt="레몬" />
+          </span>
         </div>
 
         <div className={styles.texts}>

@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 export const mainWrap = style({
   padding: "3rem 5rem 0",
@@ -37,6 +37,8 @@ export const blackBoard = style({
   position: "absolute",
   top: "10%",
   left: "10%",
+  background: "rgba(255,255,255,0.5)",
+  padding: "0.8rem",
 });
 
 export const cheers = style({
@@ -45,6 +47,12 @@ export const cheers = style({
   position: "absolute",
   bottom: "0",
   right: "15%",
+  borderRadius: "50% 50% 0 0",
+  background: "rgba(255,255,255,0.5)",
+  padding: "0.8rem",
+});
+
+export const cheersImg = style({
   borderRadius: "50% 50% 0 0",
 });
 
@@ -55,6 +63,8 @@ export const lemon = style({
   top: "20%",
   right: "8%",
   zIndex: -1,
+  background: "rgba(255,255,255,0.5)",
+  padding: "0.8rem",
 });
 
 export const neon = style({
@@ -63,6 +73,13 @@ export const neon = style({
   position: "absolute",
   bottom: "-5rem",
   left: "0",
+  borderRadius: "50%",
+  zIndex: 1,
+  background: "rgba(255,255,255,0.5)",
+  padding: "0.8rem",
+});
+
+export const neonImg = style({
   borderRadius: "50%",
   zIndex: 1,
 });
@@ -126,4 +143,9 @@ export const arrowShow = style({
   transform: "translateY(-50%)",
   opacity: "1",
   transition: "all 0.3s",
+});
+
+globalStyle("img", {
+  width: "100%",
+  height: "100%",
 });
