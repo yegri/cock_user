@@ -3,9 +3,9 @@ import { globalStyle, style } from "@vanilla-extract/css";
 export const box = style({
   boxShadow: "2px 2px 10px 2px #cecece",
   background: "rgba(240,240,240,0.5)",
-  borderRadius: "10px",
-  width: "100%",
-  height: "140px",
+  borderRadius: "4px",
+  width: "300px",
+  height: "300px",
   cursor: "pointer",
   display: "flex",
 });
@@ -24,7 +24,7 @@ export const thumbnail = style({
 });
 
 export const right = style({
-  width: "90%",
+  width: "100%",
   height: "100%",
   padding: "0.8rem",
 });
@@ -34,6 +34,11 @@ export const name = style({
   fontWeight: "bold",
   marginBottom: "0.3rem",
   marginTop: "0.3rem",
+});
+
+export const author = style({
+  color: "#777",
+  marginBottom: "0.8rem",
 });
 
 export const explain = style({

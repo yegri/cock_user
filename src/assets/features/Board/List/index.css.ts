@@ -22,3 +22,8 @@ export const hotPostItemBox = style({
 });
 
 export const newPost = style({});
+
+export const newPostBox = style({
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr 1fr 1fr",
+});
