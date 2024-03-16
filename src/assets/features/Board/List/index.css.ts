@@ -23,6 +23,15 @@ export const hotPostItemBox = style({
 
 export const newPost = style({});
 
+export const topBox = style({
+  display: "flex",
+  alignItems: "center",
+});
+
+export const goWrite = style({
+  marginLeft: "1rem",
+});
+
 export const newPostBox = style({
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr 1fr",

@@ -5,10 +5,31 @@ import Image from "next/image";
 import example1 from "@/assets/images/cocktails/Rectangle 254.png";
 import heart from "@/assets/images/icon/ph_heart.png";
 import heart_fill from "@/assets/images/icon/ph_heart-fill.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import prisma from "@/app/lib/prisma";
+import { useParams } from "next/navigation";
 
 const BoardDetailPage = () => {
+  const { id } = useParams() as { id: string };
+
+  console.log(id);
+
   const [like, setLike] = useState(false);
+
+  // useEffect(() => {
+  //   const fetchPost = async () => {
+  //     try {
+  //       const postData = await getPostById(id);
+  //       setPost(postData);
+  //     } catch (error) {
+  //       console.error("Error fetching post:", error);
+  //     }
+  //   };
+
+  //   if (id) {
+  //     fetchPost();
+  //   }
+  // }, [id]);
 
   const OnHeartClick = () => {
     setLike(!like);
@@ -16,13 +37,13 @@ const BoardDetailPage = () => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.title}>
-        <h1>제가 만든 칵테일 제조법입니다.</h1>
+      {/* <div className={styles.title}>
+        <h1>{post?.title}</h1>
         <div className={styles.info}>
-          <p>yeloper</p>
-          <span>2024.01.01</span>
+          <p>{post?.authorName}</p>
+          <span>{post.createdAt}</span>
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.top}>
         <span className={styles.mainImgBox}>

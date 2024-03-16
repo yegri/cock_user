@@ -1,33 +1,63 @@
 "use client";
-import { useFormState } from "react-dom";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { SyntheticEvent, useEffect, useState } from "react";
 
-interface FormErrors {
-  title?: string[];
-  content?: string[];
-}
+const PostForm = () => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [authorId, setAuthorId] = useState<Number | null>(null);
 
-interface FormState {
-  errors: FormErrors;
-}
+  const { data: session } = useSession();
+  const author = session?.user?.name;
+  const router = useRouter();
 
-interface PostFormProps {
-  formAction: any;
-  initialData: {
-    title: string;
-    content: string;
+  useEffect(() => {
+    // 세션 데이터가 로드되면 사용자 식별자를 설정
+    if (session?.user?.id) {
+      setAuthorId(session.user.id);
+    }
+  }, [session]);
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
   };
-}
 
-const PostForm = ({ formAction, initialData }: PostFormProps) => {
-  const [formState, action] = useFormState<FormState>(formAction, {
-    errors: {},
-  });
+  const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(e.target.value);
+  };
+
+  const handleSubmit = async (e: SyntheticEvent) => {
+    e.preventDefault();
+
+    // authorId가 null인 경우 처리
+    if (authorId === null) {
+      console.error("사용자 식별자가 없습니다. 사용자를 다시 로그인하세요.");
+      return;
+    }
+
+    try {
+      await fetch("/api/addpost", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title, content, authorId }),
+      });
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+
+    setTitle("");
+    setContent("");
+  };
 
   return (
     <>
-      <h1>{initialData.title ? "글 수정하기" : "글 작성하기"}</h1>
+      {/* <h1>{initialData.title ? "글 수정하기" : "글 작성하기"}</h1> */}
 
-      <form action={action}>
+      <form onSubmit={handleSubmit}>
         <div>
           <div>
             <label htmlFor="title">글 제목</label>
@@ -35,11 +65,10 @@ const PostForm = ({ formAction, initialData }: PostFormProps) => {
               type="text"
               id="title"
               name="title"
-              defaultValue={initialData.title}
+              value={title}
+              onChange={handleTitleChange}
+              required
             />
-            {formState.errors.title && (
-              <div>{formState.errors.title?.join(",")}</div>
-            )}
           </div>
         </div>
 
@@ -48,11 +77,10 @@ const PostForm = ({ formAction, initialData }: PostFormProps) => {
           <textarea
             name="content"
             id="content"
-            defaultValue={initialData.content}
-          ></textarea>
-          {formState.errors.content && (
-            <div>{formState.errors.content?.join(",")}</div>
-          )}
+            value={content}
+            onChange={handleContentChange}
+            required
+          />
         </div>
 
         <div>
