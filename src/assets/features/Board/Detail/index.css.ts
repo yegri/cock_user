@@ -6,12 +6,34 @@ export const root = style({
   margin: "3rem auto",
 });
 
+export const titleBox = style({
+  marginBottom: "1rem",
+});
+
+export const titleTop = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  width: "100%",
+  marginBottom: "1rem",
+});
+
 export const title = style({
-  marginBottom: "2rem",
+  fontSize: "2rem",
+  fontWeight: "bold",
+});
+
+export const subTxt = style({
+  color: "#777",
+});
+
+export const bar = style({
+  margin: "0 0.5rem",
 });
 
 export const info = style({
   display: "flex",
+  alignItems: "center",
   justifyContent: "space-between",
   color: "#777777",
   fontSize: "1.2rem",
@@ -36,15 +58,16 @@ export const mainImg = style({
 export const heartBox = style({
   display: "flex",
   justifyContent: "flex-end",
-  margin: "1rem 0",
 });
 
 export const heartImg = style({
-  width: "2.5rem",
+  width: "1.8rem",
   height: "auto",
 });
 
-export const bottom = style({});
+export const bottom = style({
+  marginTop: "3rem",
+});
 
 globalStyle("h1", {
   marginBottom: "1rem",

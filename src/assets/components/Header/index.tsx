@@ -14,7 +14,6 @@ import { usePathname } from "next/navigation";
 const Header = () => {
   const { data: session } = useSession();
   const user = session?.user;
-  console.log(session);
 
   const pathname = usePathname();
   const [modal, setModal] = useState(false);
