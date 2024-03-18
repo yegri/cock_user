@@ -8,6 +8,8 @@ import heart_fill from "@/assets/images/icon/ph_heart-fill.png";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import dayjs from "dayjs";
+import DeletePostButton from "@/assets/components/Board/DeletPostButton";
+import UpdatePostButton from "@/assets/components/Board/UpdatePostButton";
 
 const BoardDetailPage = ({ postId }: any) => {
   // 로그인한 유저 정보
@@ -66,9 +68,9 @@ const BoardDetailPage = ({ postId }: any) => {
           {/* 로그인한 유저와 글쓴 유저가 같을 때만 나타남 */}
           {userId === postState?.authorId && (
             <div className={styles.subTxt}>
-              <span>수정</span>
+              <UpdatePostButton postId={postId} />
               <span className={styles.bar}>|</span>
-              <span>삭제</span>
+              <DeletePostButton postId={postId} />
             </div>
           )}
         </div>

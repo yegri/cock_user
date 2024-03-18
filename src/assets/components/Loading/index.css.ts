@@ -1,6 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-export const root = style({
+export const loadingBox = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -10,6 +10,6 @@ export const root = style({
   fontSize: "1.5rem",
 });
 
-export const img = style({
+export const loadingImg = style({
   marginBottom: "1.2rem",
 });

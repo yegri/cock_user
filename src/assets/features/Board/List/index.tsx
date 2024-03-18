@@ -27,12 +27,12 @@ export default async function BoardListPage() {
 
   return (
     <div className={styles.root}>
-      <div className={styles.hotPost}>
+      {/* <div className={styles.hotPost}>
         <h2>인기 게시글</h2>
         <div className={styles.hotPostItemBox}>
-          {/* <BoardItem id={dummy.id} /> */}
+          <BoardItem id={dummy.id} />
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.newPost}>
         <div className={styles.topBox}>
@@ -42,10 +42,19 @@ export default async function BoardListPage() {
           </Link>
         </div>
 
-        <div className={styles.newPostBox}>
-          {posts.map((post) => {
+        <div className={styles.newPostTable1}>
+          <span className={`${styles.th} ${styles.th1}`}>No</span>
+          <span className={`${styles.th} ${styles.th2}`}>제목</span>
+          <span className={`${styles.th} ${styles.th3}`}>작성자</span>
+          <span className={`${styles.th} ${styles.th4}`}>날짜</span>
+          <span className={`${styles.th} ${styles.th5}`}> 추천수</span>
+        </div>
+
+        <div className={styles.newPostTable2}>
+          {posts.map((post, index) => {
             return (
               <BoardNewItem
+                num={index + 1}
                 key={post.id}
                 id={post.id}
                 title={post.title}

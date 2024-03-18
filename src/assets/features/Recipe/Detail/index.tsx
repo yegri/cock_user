@@ -96,7 +96,7 @@ const RecipeDetailPage = () => {
   } else {
     const { name, img, info, category, glass, instruction, ingredients } =
       modifiedCocktail;
-    console.log(modifiedCocktail);
+
     return (
       <>
         {loading ? (

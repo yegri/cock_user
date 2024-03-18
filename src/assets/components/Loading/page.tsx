@@ -4,8 +4,12 @@ import * as styles from "./index.css";
 
 const Loading = () => {
   return (
-    <div className={styles.root}>
-      <Image src={loading_img} alt="로딩 이미지" className={styles.img} />
+    <div className={styles.loadingBox}>
+      <Image
+        src={loading_img}
+        alt="로딩 이미지"
+        className={styles.loadingImg}
+      />
       <p>Loading...</p>
     </div>
   );

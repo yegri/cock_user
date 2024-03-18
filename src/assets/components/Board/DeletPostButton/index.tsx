@@ -19,9 +19,9 @@ const DeletePostButton = ({ postId }: any) => {
   }
 
   return (
-    <button onClick={handleClick} className={styles.button}>
-      삭제하기
-    </button>
+    <span onClick={handleClick} className={styles.deleteBtn}>
+      삭제
+    </span>
   );
 };
 

@@ -26,13 +26,44 @@ export const newPost = style({});
 export const topBox = style({
   display: "flex",
   alignItems: "center",
+  marginBottom: "1rem",
 });
 
 export const goWrite = style({
   marginLeft: "1rem",
 });
 
-export const newPostBox = style({
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr 1fr",
+export const newPostTable1 = style({
+  display: "flex",
+  borderTop: "1.5px solid #000",
+  borderBottom: "1.2px solid #000",
+  padding: "0.5rem 0",
+});
+
+export const newPostTable2 = style({});
+
+export const th = style({
+  display: "inline-block",
+  textAlign: "center",
+  fontWeight: "bold",
+});
+
+export const th1 = style({
+  width: "10%",
+});
+
+export const th2 = style({
+  width: "40%",
+});
+
+export const th3 = style({
+  width: "15%",
+});
+
+export const th4 = style({
+  width: "25%",
+});
+
+export const th5 = style({
+  width: "10%",
 });

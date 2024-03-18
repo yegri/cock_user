@@ -8,6 +8,8 @@ export const root = style({
 
 export const titleBox = style({
   marginBottom: "1rem",
+  borderBottom: "1.2px solid #000",
+  paddingBottom: "1rem",
 });
 
 export const titleTop = style({
