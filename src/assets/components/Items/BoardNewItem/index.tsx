@@ -4,6 +4,7 @@ import React from "react";
 import ex1 from "@/assets/images/cocktails/Rectangle 254.png";
 import * as styles from "./index.css";
 import { useRouter } from "next/navigation";
+import DeletePostButton from "../../Board/DeletPostButton";
 
 interface PostProps {
   id: string;
@@ -25,6 +26,7 @@ const BoardNewItem = ({ id, title, content, authorName }: PostProps) => {
         <p className={styles.author}>{authorName}</p>
         <p className={styles.explain}>{content}</p>
       </div>
+      <DeletePostButton postId={id} />
     </div>
   );
 };
