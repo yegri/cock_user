@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { SyntheticEvent, useEffect, useState } from "react";
 import * as styles from "./index.css";
 
-const PostForm = () => {
+const PostForm = ({ postId }: any) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [authorId, setAuthorId] = useState<Number | null>(null);
@@ -28,6 +28,23 @@ const PostForm = () => {
     setContent(e.target.value);
   };
 
+  useEffect(() => {
+    // postId가 존재하면 해당 글 데이터를 불러옴
+    if (postId) {
+      // postId를 사용하여 글 데이터를 불러오는 API 호출
+      fetch(`/api/post/${postId}`)
+        .then((response) => response.json())
+        .then((postData) => {
+          setTitle(postData.title);
+          setContent(postData.content);
+          // 작성자 식별자를 설정
+          setAuthorId(postData.authorId);
+        })
+        .catch((error) => console.error("Error fetching post:", error));
+    }
+  }, [postId]);
+
+  // 새 글 작성 및 수정 로직
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
@@ -38,7 +55,9 @@ const PostForm = () => {
     }
 
     try {
-      await fetch("/api/addpost", {
+      // postId가 있으면 글 수정, 없으면 새 글 작성
+      const url = postId ? `/api/post/${postId}` : "/api/addpost";
+      await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +77,9 @@ const PostForm = () => {
 
   return (
     <div className={styles.formBox}>
-      {/* <h1>{initialData.title ? "글 수정하기" : "글 작성하기"}</h1> */}
+      <h1 className={styles.formTitle}>
+        {title ? "글 수정하기" : "글 작성하기"}
+      </h1>
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputBox}>

@@ -4,6 +4,10 @@ export const formBox = style({
   padding: "2rem",
 });
 
+export const formTitle = style({
+  textAlign: "center",
+});
+
 export const form = style({
   padding: "1.2rem 1rem",
 });

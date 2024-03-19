@@ -37,3 +37,20 @@ export async function GET(request: Request, { params }: any) {
 
   return NextResponse.json(postData);
 }
+
+export async function POST(request: Request, { params }: any) {
+  const id = params.id;
+  const { title, content, authorId } = await request.json(); // JSON 형식으로 파싱
+
+  // 글 수정 로직 구현
+  const updatedPost = await prisma.post.update({
+    where: { id },
+    data: {
+      title,
+      content,
+      authorId,
+    },
+  });
+
+  return NextResponse.json(updatedPost);
+}

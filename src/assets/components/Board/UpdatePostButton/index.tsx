@@ -7,7 +7,7 @@ const UpdatePostButton = ({ postId }: any) => {
   const router = useRouter();
 
   async function handleClick() {
-    // 수정하는 로직
+    router.push(`/board/${postId}/edit`);
   }
 
   return (
