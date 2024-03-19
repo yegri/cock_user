@@ -2,14 +2,15 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useEffect, useState } from "react";
+import * as styles from "./index.css";
 
 const PostForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [authorId, setAuthorId] = useState<Number | null>(null);
 
+  // 로그인한 유저 데이터
   const { data: session } = useSession();
-  const author = session?.user?.name;
   const router = useRouter();
 
   useEffect(() => {
@@ -44,6 +45,8 @@ const PostForm = () => {
         },
         body: JSON.stringify({ title, content, authorId }),
       });
+      alert("저장하시겠습니까?");
+      router.push("/board");
       router.refresh();
     } catch (error) {
       console.log(error);
@@ -54,41 +57,60 @@ const PostForm = () => {
   };
 
   return (
-    <>
+    <div className={styles.formBox}>
       {/* <h1>{initialData.title ? "글 수정하기" : "글 작성하기"}</h1> */}
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <div>
-            <label htmlFor="title">글 제목</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={title}
-              onChange={handleTitleChange}
-              required
-            />
-          </div>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.inputBox}>
+          <label htmlFor="title" className={styles.label}>
+            제목
+          </label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={title}
+            onChange={handleTitleChange}
+            required
+            className={styles.input}
+          />
         </div>
 
-        <div>
-          <label htmlFor="content">내용</label>
+        <div className={styles.textAreaBox}>
+          <label htmlFor="content" className={styles.label}>
+            내용
+          </label>
           <textarea
             name="content"
             id="content"
             value={content}
             onChange={handleContentChange}
             required
+            className={styles.textArea}
           />
         </div>
 
-        <div>
-          <button type="submit">저장하기</button>
-          <button>취소하기</button>
+        <div className={styles.buttonBox}>
+          <button type="submit" className={styles.saveBtn}>
+            저장하기
+          </button>
+        </div>
+
+        <div className={styles.buttonBox}>
+          <p
+            onClick={() => {
+              alert(
+                "작성 중인 내용은 저장되지 않습니다. 그래도 취소하시겠습니까?"
+              );
+              router.push("/board");
+            }}
+            className={styles.cancelTxt}
+          >
+            취소하기
+          </p>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

@@ -11,8 +11,9 @@ const DeletePostButton = ({ postId }: any) => {
       await fetch(`/api/post/${postId}`, {
         method: "DELETE",
       });
-
-      router.refresh;
+      alert("삭제하시겠습니까?");
+      router.push("/board");
+      router.refresh();
     } catch (e) {
       console.error(e);
     }

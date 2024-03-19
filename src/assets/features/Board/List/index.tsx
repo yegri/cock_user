@@ -4,6 +4,7 @@ import BoardNewItem from "@/assets/components/Items/BoardNewItem";
 import prisma from "@/app/lib/prisma";
 import Link from "next/link";
 
+// 전체 게시글 가져오는 함수
 async function getPosts() {
   const posts = await prisma.post.findMany({
     where: { published: true },
@@ -23,7 +24,6 @@ async function getPosts() {
 
 export default async function BoardListPage() {
   const posts = await getPosts();
-  console.log({ posts });
 
   return (
     <div className={styles.root}>
@@ -47,7 +47,7 @@ export default async function BoardListPage() {
           <span className={`${styles.th} ${styles.th2}`}>제목</span>
           <span className={`${styles.th} ${styles.th3}`}>작성자</span>
           <span className={`${styles.th} ${styles.th4}`}>날짜</span>
-          <span className={`${styles.th} ${styles.th5}`}> 추천수</span>
+          <span className={`${styles.th} ${styles.th5}`}>추천수</span>
         </div>
 
         <div className={styles.newPostTable2}>
@@ -60,6 +60,7 @@ export default async function BoardListPage() {
                 title={post.title}
                 content={post.content}
                 authorName={post.authorName}
+                createdAt={post.createdAt}
               />
             );
           })}
