@@ -30,6 +30,10 @@ const handler = NextAuth({
         const user = await res.json();
         console.log(user);
 
+        if (user.state === 401) {
+          console.log("error");
+        }
+
         if (user) {
           return user;
         } else {
