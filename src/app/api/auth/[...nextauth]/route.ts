@@ -1,3 +1,4 @@
+import axios from "axios";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -17,26 +18,31 @@ const handler = NextAuth({
       // 맞으면 user 객체 리턴
       // 틀리면 null 리턴
       async authorize(credentials, req) {
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: credentials?.username,
-            password: credentials?.password,
-          }),
-        });
-        const user = await res.json();
-        console.log(user);
+        try {
+          const res = await axios.post(
+            `${process.env.NEXTAUTH_URL}/api/login`,
+            {
+              username: credentials?.username,
+              password: credentials?.password,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
 
-        if (user.state === 401) {
-          console.log("error");
-        }
+          if (res.status === 401) {
+            console.log("error");
+            return null;
+          }
 
-        if (user) {
+          const user = res.data;
+          console.log(user);
+
           return user;
-        } else {
+        } catch (error) {
+          console.error("An error occurred while logging in:", error);
           return null;
         }
       },
