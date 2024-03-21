@@ -70,7 +70,7 @@ const SignUpPage = () => {
       };
 
       // 회원가입 API에 데이터를 POST 요청으로 보냅니다.
-      fetch("http://localhost:3000/api/user", {
+      fetch("api/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
