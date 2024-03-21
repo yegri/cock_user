@@ -41,12 +41,12 @@ const SignInPage = () => {
       router.push("/");
     }
 
-    if (result?.status === 401) {
-      alert("아이디 혹은 비밀번호가 일치하지 않습니다!");
-      router.refresh();
-    } else {
-      router.push("/");
-    }
+    // if (result?.status === 401) {
+    //   alert("아이디 혹은 비밀번호가 일치하지 않습니다!");
+    //   router.refresh();
+    // } else {
+    //   router.push("/");
+    // }
   };
 
   return (
